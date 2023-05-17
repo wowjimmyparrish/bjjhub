@@ -4,7 +4,7 @@ class CreateTechniques < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :video
       t.boolean :is_favorite
-      t.string :description
+      t.string :position
       t.integer :user_id
       t.integer :position_id
 

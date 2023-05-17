@@ -10,10 +10,20 @@
 User.create!(username: "jimmy", password: "password")
 User.create!(username: "darrel", password: "password123")
 
-# Workout.create!(title: "Workout 1", focus: "This focuses on the biceps", length: 45, workout: "Concentration Curls 5 reps x 5 sets, Barbell Curls 5 reps x 5 sets, Hammer Curls 10 reps x 3 sets", user_id: 1)
-# Workout.create!(title: "Workout 2", focus: "This is a lower body workout", length: 60, workout: "Squats 10 reps x 5 sets, Lunges 10 reps x 3 sets, GHR 10 reps x 3 sets, Leg extensions 10 reps x 3 sets", user_id: 1) 
-# Workout.create!(title: "Workout 3", focus: "This is a full body workout", length: 90, workout: "Squats 5 reps x 5 sets, Deadlifts 5 reps x 5 sets, Bench Press 5 reps x 5 sets, Barbell Rows 5 reps x 5 sets, Pullups AMRAP x 3, Military Press 5 reps x 5 sets", user_id: 2)
-# Workout.create!(title: "Workout 4", focus: "This focuses on the arms", length: 45, workout: "Barbell Curls 10 reps x 3 sets, Hammer Curls 10 reps x 3 sets, Skullcrushers 10 reps x 3 sets, Tricep extensions 10 reps x 3 sets", user_id: 2)
+Technique.create!(name: "Kimura", video: "https://youtu.be/p-6lmaseoGI", position: "side control", is_favorite: false, position_id: 2, user_id: 1)
+Technique.create!(name: "Knee On Belly defense", video: "https://youtu.be/cOiwKYGDFMQ", position: "knee on belly", is_favorite: true, position_id: 3, user_id: 1)
+Technique.create!(name: "Armbar from guard", video: "https://youtu.be/pQ43Oy5k9yQ", position: "guard", is_favorite: true, position_id: 1, user_id: 1)
+Technique.create!(name: "Cross choke from mount", video: "https://youtu.be/8wLWTw8G0c0", position: "mount", is_favorite: true, position_id: 4, user_id: 2)
+Technique.create!(name: "Rolling escape", video: "https://youtu.be/RRp5tficE00", position: "turtle", is_favorite: false, position_id: 6, user_id: 2)
+Technique.create!(name: "5 ways out of back mount", video: "https://youtu.be/rHr_Xge5eIw", position: "rear mount", is_favorite: true, position_id: 5, user_id: 2)
+
 
 Comment.create!(comment: "Great video!", user_id: 1, technique_id: 1) 
 Comment.create!(comment: "Bad video!", user_id: 2, technique_id: 2)
+
+Position.create!(name: "guard")
+Position.create!(name: "side control")
+Position.create!(name: "knee on belly")
+Position.create!(name: "mount")
+Position.create!(name: "rear mount")
+Position.create!(name: "turtle")
