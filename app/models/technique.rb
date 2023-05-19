@@ -6,8 +6,6 @@ class Technique < ApplicationRecord
 
     validates :name, presence: true, uniqueness: {case_sensitive: false} 
     validates :video, presence: true
-    # Check syntax for this validation
-    validates :position, presence: true, inclusion: { in: %w(guard side control knee on belly mount rear mount turtle),
-        message: "%{value} is not a valid position" }
+    # validates :position, presence: true, inclusion: { in: ["guard", "side control", "knee on belly", "mount" "rear mount", "turtle"]}
     
 end

@@ -6,20 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "🌱 Seeding data..."
 
 User.create!(username: "jimmy", password: "password")
 User.create!(username: "darrel", password: "password123")
-
-Technique.create!(name: "Kimura", video: "https://youtu.be/p-6lmaseoGI", position: "side control", is_favorite: false, position_id: 2, user_id: 1)
-Technique.create!(name: "Knee On Belly defense", video: "https://youtu.be/cOiwKYGDFMQ", position: "knee on belly", is_favorite: true, position_id: 3, user_id: 1)
-Technique.create!(name: "Armbar from guard", video: "https://youtu.be/pQ43Oy5k9yQ", position: "guard", is_favorite: true, position_id: 1, user_id: 1)
-Technique.create!(name: "Cross choke from mount", video: "https://youtu.be/8wLWTw8G0c0", position: "mount", is_favorite: true, position_id: 4, user_id: 2)
-Technique.create!(name: "Rolling escape", video: "https://youtu.be/RRp5tficE00", position: "turtle", is_favorite: false, position_id: 6, user_id: 2)
-Technique.create!(name: "5 ways out of back mount", video: "https://youtu.be/rHr_Xge5eIw", position: "rear mount", is_favorite: true, position_id: 5, user_id: 2)
-
-
-Comment.create!(comment: "Great video!", user_id: 1, technique_id: 1) 
-Comment.create!(comment: "Bad video!", user_id: 2, technique_id: 2)
 
 Position.create!(name: "guard")
 Position.create!(name: "side control")
@@ -27,3 +17,16 @@ Position.create!(name: "knee on belly")
 Position.create!(name: "mount")
 Position.create!(name: "rear mount")
 Position.create!(name: "turtle")
+
+Technique.create!(name: "Kimura", video: "https://youtu.be/p-6lmaseoGI", is_favorite: false, position_id: 2, user_id: 1)
+Technique.create!(name: "Knee On Belly defense", video: "https://youtu.be/cOiwKYGDFMQ", is_favorite: true, position_id: 3, user_id: 1)
+Technique.create!(name: "Armbar from guard", video: "https://youtu.be/pQ43Oy5k9yQ", is_favorite: true, position_id: 1, user_id: 1)
+Technique.create!(name: "Cross choke from mount", video: "https://youtu.be/8wLWTw8G0c0", is_favorite: true, position_id: 4, user_id: 2)
+Technique.create!(name: "Rolling escape", video: "https://youtu.be/RRp5tficE00",is_favorite: false, position_id: 6, user_id: 2)
+Technique.create!(name: "5 ways out of back mount", video: "https://youtu.be/rHr_Xge5eIw", is_favorite: true, position_id: 5, user_id: 2)
+
+
+Comment.create!(comment: "Great video!", user_id: 1, technique_id: 1) 
+Comment.create!(comment: "Bad video!", user_id: 2, technique_id: 2)
+
+puts "✅ Done seeding!"
