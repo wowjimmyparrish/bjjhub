@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    rescue_from ActiveRecord::RecordNotFound, with: :userNotLoggedIn
+    rescue_from ActiveRecord::RecordNotFound, with: :user_not_logged_in
 
     def create 
         user = User.create!(user_params)
@@ -10,14 +10,13 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find_by!(id: session[:user_id]) 
-                                        # Logged in users created_workouts and reviews with associated workout.  adapter: nil bypasses user serializer. 
-                                        
-        render json: user, include: [:created_techniques, :comments => {:include => :technique} ], adapter: nil
+     # Logged in users created_techniques w/ associated position, comments with associated technique and position.  adapter: nil bypasses user serializer. 
+    render json: user, include: { created_techniques: { include: :position }, comments: { include: { technique: { include: :position } } } }, adapter: nil
     end
 
     private 
 
-    def userNotLoggedIn
+    def user_not_logged_in
         return render json: {error: "User is not logged in"}, status: :unauthorized
     end
 

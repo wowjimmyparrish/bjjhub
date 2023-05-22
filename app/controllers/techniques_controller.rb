@@ -5,7 +5,7 @@ class TechniquesController < ApplicationController
 
     def index 
         techniques = Technique.all
-        render json: techniques, include: [:user, :comments], status: :ok
+        render json: techniques, include: [:user, :comments, :position], status: :ok
   end
 
   def show 
