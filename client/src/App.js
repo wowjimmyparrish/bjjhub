@@ -3,9 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/user";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
+  const [allTechniques, setAllTechniques] = useState([]);
 
   // fetching user data
   useEffect(() => {
@@ -18,6 +20,13 @@ function App() {
     });
   }, [setUser]);
 
+  //fetching all workouts
+  useEffect(() => {
+    fetch("/techniques")
+      .then((r) => r.json())
+      .then((data) => setAllTechniques(data));
+  }, []);
+
   if (!user) return <Login />;
   return (
     <>
@@ -26,6 +35,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/"></Route>
+          <Home allTechniques={allTechniques} />
           <Route path="/uploadvideo"></Route>
           <Route path="/myvideos"></Route>
           <Route path="/mycomments"></Route>
