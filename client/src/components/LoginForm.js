@@ -1,12 +1,16 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/user";
 import { useHistory } from "react-router-dom";
+import { UserTechniqueContext } from "../context/userTechnique";
+import { UserCommentContext } from "../context/userComment";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { setUser } = useContext(UserContext);
+  const { setUserTechniques } = useContext(UserTechniqueContext);
+  const { setUserComments } = useContext(UserCommentContext);
 
   const history = useHistory();
 
@@ -22,6 +26,8 @@ function LoginForm() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
+          setUserTechniques(user.created_techniques);
+          setUserComments(user.comments);
           history.push("/");
         });
       } else {

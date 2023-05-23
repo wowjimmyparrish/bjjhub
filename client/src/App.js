@@ -1,15 +1,19 @@
-import React from "react";
-import { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/user";
 import { TechniqueContext } from "./context/technique";
+import { UserTechniqueContext } from "./context/userTechnique";
+import { UserCommentContext } from "./context/userComment";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
+import MyTechniques from "./pages/MyTechniques";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { setAllTechniques } = useContext(TechniqueContext);
+  const { setUserTechniques } = useContext(UserTechniqueContext);
+  const { setUserComments } = useContext(UserCommentContext);
 
   // fetching user data
   useEffect(() => {
@@ -17,10 +21,12 @@ function App() {
       if (response.ok) {
         response.json().then((user) => {
           setUser(user);
+          setUserTechniques(user.created_techniques);
+          setUserComments(user.comments);
         });
       }
     });
-  }, [setUser]);
+  }, [setUser, setUserTechniques, setUserComments]);
 
   //fetching all techniques
   useEffect(() => {
@@ -40,7 +46,9 @@ function App() {
             <Home />
           </Route>
           <Route path="/uploadvideo"></Route>
-          <Route path="/myvideos"></Route>
+          <Route path="/myvideos">
+            <MyTechniques />
+          </Route>
           <Route path="/mycomments"></Route>
           <Route path="/favorites"></Route>
         </Switch>

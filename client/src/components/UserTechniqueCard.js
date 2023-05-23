@@ -1,19 +1,22 @@
 import React from "react";
 
-function TechniqueCard({ technique }) {
+function UserTechniqueCard({ name, userVideo }) {
   return (
     <div className="card p-4 m-4">
-      <h3>{technique.name}</h3>
+      <h3>{name}</h3>
       <iframe
         width="560"
         height="315"
         title="Video Player"
-        src={technique.video}
+        src={userVideo}
         frameborder="0"
         allowfullscreen
       ></iframe>
+      <button className="btn btn-danger" type="submit">
+        Delete
+      </button>
     </div>
   );
 }
 
-export default TechniqueCard;
+export default UserTechniqueCard;
