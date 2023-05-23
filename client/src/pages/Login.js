@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 
-function Login({ setUserTechniques, setUserComments }) {
+function Login() {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -13,10 +13,7 @@ function Login({ setUserTechniques, setUserComments }) {
       <br></br>
       {showLogin ? (
         <>
-          <LoginForm
-            setUserTechniques={setUserTechniques}
-            setUserReviews={setUserComments}
-          />
+          <LoginForm />
           <br></br>
           <p className="d-flex justify-content-center align-items-center">
             Don't have an account?

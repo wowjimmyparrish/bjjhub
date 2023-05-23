@@ -1,13 +1,15 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/user";
+import { TechniqueContext } from "./context/technique";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import NavBar from "./components/NavBar";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  const [allTechniques, setAllTechniques] = useState([]);
+  const { allTechniques, setAllTechniques } = useContext(TechniqueContext);
 
   // fetching user data
   useEffect(() => {
@@ -20,22 +22,22 @@ function App() {
     });
   }, [setUser]);
 
-  //fetching all workouts
+  //fetching all techniques
   useEffect(() => {
     fetch("/techniques")
       .then((r) => r.json())
       .then((data) => setAllTechniques(data));
-  }, []);
+  }, [setAllTechniques]);
 
   if (!user) return <Login />;
   return (
     <>
-      {/* <NavBar user={user} /> */}
+      <NavBar user={user} />
 
       <main>
         <Switch>
           <Route exact path="/"></Route>
-          <Home allTechniques={allTechniques} />
+          <Home />
           <Route path="/uploadvideo"></Route>
           <Route path="/myvideos"></Route>
           <Route path="/mycomments"></Route>

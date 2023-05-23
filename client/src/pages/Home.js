@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home({ allTechniques }) {
+function Home() {
   return <></>;
 }
 
