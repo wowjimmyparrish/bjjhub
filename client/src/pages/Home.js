@@ -1,7 +1,12 @@
 import React from "react";
+import TechniqueList from "../components/TechniqueList";
 
 function Home() {
-  return <></>;
+  return (
+    <>
+      <TechniqueList />
+    </>
+  );
 }
 
 export default Home;

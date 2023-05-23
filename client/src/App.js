@@ -9,7 +9,7 @@ import NavBar from "./components/NavBar";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  const { allTechniques, setAllTechniques } = useContext(TechniqueContext);
+  const { setAllTechniques } = useContext(TechniqueContext);
 
   // fetching user data
   useEffect(() => {
@@ -32,12 +32,13 @@ function App() {
   if (!user) return <Login />;
   return (
     <>
-      <NavBar user={user} />
+      <NavBar />
 
       <main>
         <Switch>
-          <Route exact path="/"></Route>
-          <Home />
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path="/uploadvideo"></Route>
           <Route path="/myvideos"></Route>
           <Route path="/mycomments"></Route>
