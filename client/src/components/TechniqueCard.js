@@ -1,5 +1,5 @@
 import React from "react";
-
+import Comment from "./Comment";
 function TechniqueCard({ technique }) {
   return (
     <div className="card p-4 m-4">
@@ -9,9 +9,8 @@ function TechniqueCard({ technique }) {
         height="315"
         title="Video Player"
         src={technique.video}
-        frameborder="0"
-        allowfullscreen
       ></iframe>
+      <Comment comments={technique.comments} />
     </div>
   );
 }

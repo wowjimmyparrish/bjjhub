@@ -9,8 +9,6 @@ function UserTechniqueCard({ name, userVideo }) {
         height="315"
         title="Video Player"
         src={userVideo}
-        frameborder="0"
-        allowfullscreen
       ></iframe>
       <button className="btn btn-danger" type="submit">
         Delete
