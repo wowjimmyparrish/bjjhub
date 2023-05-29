@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import MyTechniques from "./pages/MyTechniques";
 import MyComments from "./pages/MyComments";
+import CreateTechnique from "./pages/CreateTechnique";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -36,6 +37,13 @@ function App() {
       .then((r) => r.json())
       .then((data) => setAllTechniques(data));
   }, [setAllTechniques]);
+
+  function addTechnique(newTechnique) {
+    //updated all techniques for home page
+    setAllTechniques([...allTechniques, newTechnique]);
+    //updated all user workouts for my workouts page
+    setUserTechniques([...userTechniques, newTechnique]);
+  }
 
   function deleteTechnique(deletedTechnique) {
     //update all technique data
@@ -121,7 +129,9 @@ function App() {
           <Route exact path="/">
             <Home addComment={addComment} />
           </Route>
-          <Route path="/uploadvideo"></Route>
+          <Route path="/uploadvideo">
+            <CreateTechnique addTechnique={addTechnique} />
+          </Route>
           <Route path="/myvideos">
             <MyTechniques deleteTechnique={deleteTechnique} />
           </Route>
