@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import TechniqueCard from "./TechniqueCard";
 import { TechniqueContext } from "../context/technique";
 
-function TechniqueList() {
+function TechniqueList({ addComment }) {
   const { allTechniques } = useContext(TechniqueContext);
 
   const techniqueArray = allTechniques.map((technique) => (
-    <TechniqueCard key={technique.id} technique={technique} />
+    <TechniqueCard
+      key={technique.id}
+      technique={technique}
+      addComment={addComment}
+    />
   ));
   if (techniqueArray.length === 0) {
     return (

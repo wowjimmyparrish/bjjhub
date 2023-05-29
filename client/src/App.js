@@ -36,6 +36,21 @@ function App() {
       .then((data) => setAllTechniques(data));
   }, [setAllTechniques]);
 
+  function addComment(newComment) {
+    setAllTechniques((prevAllTechniques) => {
+      return prevAllTechniques.map((technique) => {
+        if (technique.id === newComment.technique_id) {
+          return {
+            ...technique,
+            comments: [...technique.comments, newComment],
+          };
+        }
+        return technique;
+      });
+    });
+    setUserComments([...userComments, newComment]);
+  }
+
   function deleteComment(deletedComment) {
     //mapping through all techniques, if id matches deleted comment id, then filter out deleted comment
     setAllTechniques((prevAllTechniques) => {
@@ -89,7 +104,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home addComment={addComment} />
           </Route>
           <Route path="/uploadvideo"></Route>
           <Route path="/myvideos">

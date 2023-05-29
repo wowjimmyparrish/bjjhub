@@ -1,6 +1,7 @@
 import React from "react";
 import Comment from "./Comment";
-function TechniqueCard({ technique }) {
+import AddComment from "./AddComment";
+function TechniqueCard({ technique, addComment }) {
   return (
     <div className="card p-4 m-4">
       <h3>{technique.name}</h3>
@@ -11,6 +12,7 @@ function TechniqueCard({ technique }) {
         src={technique.video}
       ></iframe>
       <Comment comments={technique.comments} />
+      <AddComment addComment={addComment} technique={technique} />
     </div>
   );
 }
