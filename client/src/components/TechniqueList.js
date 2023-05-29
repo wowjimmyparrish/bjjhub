@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import TechniqueCard from "./TechniqueCard";
 import { TechniqueContext } from "../context/technique";
 
