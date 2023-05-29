@@ -12,8 +12,9 @@ import MyComments from "./pages/MyComments";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  const { setAllTechniques } = useContext(TechniqueContext);
-  const { setUserTechniques } = useContext(UserTechniqueContext);
+  const { allTechniques, setAllTechniques } = useContext(TechniqueContext);
+  const { userTechniques, setUserTechniques } =
+    useContext(UserTechniqueContext);
   const { userComments, setUserComments } = useContext(UserCommentContext);
 
   // fetching user data
@@ -35,6 +36,20 @@ function App() {
       .then((r) => r.json())
       .then((data) => setAllTechniques(data));
   }, [setAllTechniques]);
+
+  function deleteTechnique(deletedTechnique) {
+    //update all technique data
+    const updatedTechniques = allTechniques.filter(
+      (technique) => technique.id !== deletedTechnique.id
+    );
+    setAllTechniques(updatedTechniques);
+
+    //update my techniques data
+    const updatedUserTechniques = userTechniques.filter(
+      (technique) => technique.id !== deletedTechnique.id
+    );
+    setUserTechniques(updatedUserTechniques);
+  }
 
   function addComment(newComment) {
     setAllTechniques((prevAllTechniques) => {
@@ -108,7 +123,7 @@ function App() {
           </Route>
           <Route path="/uploadvideo"></Route>
           <Route path="/myvideos">
-            <MyTechniques />
+            <MyTechniques deleteTechnique={deleteTechnique} />
           </Route>
           <Route path="/mycomments">
             <MyComments

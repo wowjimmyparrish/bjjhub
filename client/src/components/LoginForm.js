@@ -25,9 +25,9 @@ function LoginForm() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          setUser(user);
           setUserTechniques(user.created_techniques);
           setUserComments(user.comments);
+          setUser(user);
           history.push("/");
         });
       } else {
