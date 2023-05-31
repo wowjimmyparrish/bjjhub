@@ -4,7 +4,7 @@ class Technique < ApplicationRecord
     belongs_to :user
     belongs_to :position
 
-    validates :name, presence: true, uniqueness: {case_sensitive: false} 
+    validates :name, presence: true 
     validates :video, presence: true
     validates :position_id, presence: true
     

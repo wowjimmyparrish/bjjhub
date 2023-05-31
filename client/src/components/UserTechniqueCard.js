@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
 
 function UserTechniqueCard({ name, userVideo, deleteTechnique, technique }) {
+  const [videoError, setVideoError] = useState(false);
+
+  const handleVideoError = () => {
+    setVideoError(true);
+  };
+
   const requestOptions = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
@@ -19,12 +26,11 @@ function UserTechniqueCard({ name, userVideo, deleteTechnique, technique }) {
   return (
     <div className="card p-4 m-4">
       <h3>{name}</h3>
-      <iframe
-        width="560"
-        height="315"
-        title="Video Player"
-        src={userVideo}
-      ></iframe>
+      {videoError ? (
+        <p>Video failed to load or display.</p>
+      ) : (
+        <ReactPlayer url={userVideo} onError={handleVideoError}></ReactPlayer>
+      )}
       <button className="btn btn-danger" onClick={handleDelete} type="submit">
         Delete
       </button>
