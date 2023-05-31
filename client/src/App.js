@@ -62,7 +62,8 @@ function App() {
   function addComment(newComment) {
     setAllTechniques((prevAllTechniques) => {
       return prevAllTechniques.map((technique) => {
-        if (technique.id === newComment.technique_id) {
+        if (technique.id === newComment.technique.id) {
+          console.log("inside if");
           return {
             ...technique,
             comments: [...technique.comments, newComment],
@@ -78,7 +79,7 @@ function App() {
     //mapping through all techniques, if id matches deleted comment id, then filter out deleted comment
     setAllTechniques((prevAllTechniques) => {
       return prevAllTechniques.map((technique) => {
-        if (technique.id === deletedComment.technique_id) {
+        if (technique.id === deletedComment.technique.id) {
           const filteredComments = technique.comments.filter(
             (prevComment) => prevComment.id !== deletedComment.id
           );
@@ -101,7 +102,7 @@ function App() {
   function editComment(editedComment) {
     setAllTechniques((prevAllTechniques) => {
       return prevAllTechniques.map((technique) => {
-        if (technique.id === editedComment.technique_id) {
+        if (technique.id === editedComment.technique.id) {
           const filteredComments = technique.comments.filter(
             (prevComment) => prevComment.id !== editedComment.id
           );

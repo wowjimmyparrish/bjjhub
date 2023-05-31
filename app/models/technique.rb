@@ -6,6 +6,7 @@ class Technique < ApplicationRecord
 
     validates :name, presence: true, uniqueness: {case_sensitive: false} 
     validates :video, presence: true
-    # validates :position, presence: true, inclusion: { in: ["guard", "side control", "knee on belly", "mount" "rear mount", "turtle"]}
+    validates :position_id, presence: true
+    
     
 end

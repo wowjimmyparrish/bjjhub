@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            # including created_techniques and comments with their associations, enables you to display these attributes immediately after the user logs in.
-            render json: user, include: { created_techniques: { include: :position }, comments: { include: { technique: { include: :position } } } }, adapter: nil
+            render json: user, include: [:created_techniques, :comments => {:include => :technique} ], adapter: nil
         else 
             render json: {error: "Wrong username/password. Please try again!"}, status: :unauthorized 
         end
