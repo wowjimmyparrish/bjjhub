@@ -20,7 +20,7 @@ function TechniqueList({ addComment }) {
     );
   } else
     return (
-      <div id="workout-list">
+      <div id="technique-list">
         <h1 className="text-center">Video List</h1>
         <ul>{techniqueArray}</ul>
       </div>

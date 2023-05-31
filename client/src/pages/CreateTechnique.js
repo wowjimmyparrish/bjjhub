@@ -11,7 +11,9 @@ function CreateTechnique({ addTechnique }) {
     name: "",
     video: "",
     isFavorite: false,
+    position_id: 1,
   });
+
   const history = useHistory();
   const requestOptions = {
     method: "POST",
@@ -53,6 +55,23 @@ function CreateTechnique({ addTechnique }) {
           required
           onChange={(e) => setData({ ...data, video: e.target.value })}
         ></input>
+        <label>
+          {" "}
+          Select position{" "}
+          <select
+            name="position"
+            value={data.position_id}
+            onChange={(e) => setData({ ...data, position_id: e.target.value })}
+          >
+            <option value="1">Guard</option>
+            <option value="2">Side Control</option>
+            <option value="3">Knee on Belly</option>
+            <option value="4">Mount</option>
+            <option value="5">Rear Mount</option>
+            <option value="6">Turtle</option>
+          </select>
+          <br></br>
+        </label>
         <br></br>
         <button
           onClick={handleSubmit}

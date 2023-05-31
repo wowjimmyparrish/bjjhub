@@ -63,7 +63,6 @@ function App() {
     setAllTechniques((prevAllTechniques) => {
       return prevAllTechniques.map((technique) => {
         if (technique.id === newComment.technique.id) {
-          console.log("inside if");
           return {
             ...technique,
             comments: [...technique.comments, newComment],
