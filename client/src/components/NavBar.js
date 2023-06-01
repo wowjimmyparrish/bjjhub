@@ -2,8 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../context/user";
 import { NavLink } from "react-router-dom";
-
-function NavBar() {
+import Search from "./Search";
+function NavBar({ handleSearch }) {
   const { user, setUser } = useContext(UserContext);
 
   function handleLogoutClick() {
@@ -35,6 +35,7 @@ function NavBar() {
         <NavLink className="p-4 fs-5" to="/favorites">
           Favorites
         </NavLink>
+        <Search handleSearch={handleSearch} />
         <button className="btn btn-primary me-4" onClick={handleLogoutClick}>
           Logout
         </button>

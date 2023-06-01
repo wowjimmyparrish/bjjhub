@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/user";
 import { TechniqueContext } from "./context/technique";
@@ -17,6 +17,7 @@ function App() {
   const { userTechniques, setUserTechniques } =
     useContext(UserTechniqueContext);
   const { userComments, setUserComments } = useContext(UserCommentContext);
+  const [selectedPosition, setSelectedPosition] = useState("");
 
   // fetching user data
   useEffect(() => {
@@ -37,6 +38,10 @@ function App() {
       .then((r) => r.json())
       .then((data) => setAllTechniques(data));
   }, [setAllTechniques]);
+
+  function handleSearch(positionId) {
+    setSelectedPosition(positionId);
+  }
 
   function addTechnique(newTechnique) {
     //updated all techniques for home page
@@ -122,12 +127,12 @@ function App() {
   if (!user) return <Login />;
   return (
     <>
-      <NavBar />
+      <NavBar handleSearch={handleSearch} />
 
       <main>
         <Switch>
           <Route exact path="/">
-            <Home addComment={addComment} />
+            <Home addComment={addComment} selectedPosition={selectedPosition} />
           </Route>
           <Route path="/uploadvideo">
             <CreateTechnique addTechnique={addTechnique} />

@@ -1,10 +1,13 @@
 import React from "react";
 import TechniqueList from "../components/TechniqueList";
 
-function Home({ addComment }) {
+function Home({ addComment, selectedPosition }) {
   return (
     <>
-      <TechniqueList addComment={addComment} />
+      <TechniqueList
+        addComment={addComment}
+        selectedPosition={selectedPosition}
+      />
     </>
   );
 }

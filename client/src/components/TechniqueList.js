@@ -2,10 +2,16 @@ import React, { useContext } from "react";
 import TechniqueCard from "./TechniqueCard";
 import { TechniqueContext } from "../context/technique";
 
-function TechniqueList({ addComment }) {
+function TechniqueList({ addComment, selectedPosition }) {
   const { allTechniques } = useContext(TechniqueContext);
 
-  const techniqueArray = allTechniques.map((technique) => (
+  const filteredTechniques = selectedPosition
+    ? allTechniques.filter(
+        (technique) => technique.position_id === parseInt(selectedPosition)
+      )
+    : allTechniques;
+
+  const techniqueArray = filteredTechniques.map((technique) => (
     <TechniqueCard
       key={technique.id}
       technique={technique}

@@ -6,6 +6,8 @@ import AddComment from "./AddComment";
 function TechniqueCard({ technique, addComment }) {
   const [videoError, setVideoError] = useState(false);
 
+  console.log(technique);
+
   const handleVideoError = () => {
     setVideoError(true);
   };
