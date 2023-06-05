@@ -1,10 +1,10 @@
 import React from "react";
 
-function CommentCard({ comment }) {
+function CommentCard({ comment, username }) {
   return (
     <>
       <p>
-        {comment.comment} -{comment.user.username}
+        {comment} -{username}
       </p>
     </>
   );

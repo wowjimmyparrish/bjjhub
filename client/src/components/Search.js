@@ -1,9 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Search({ handleSearch }) {
+  const history = useHistory();
+
   const handleChange = (e) => {
     const positionId = e.target.value;
     handleSearch(positionId);
+    history.push("/");
   };
 
   return (

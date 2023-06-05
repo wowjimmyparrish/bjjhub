@@ -36,6 +36,15 @@ end
         end
       end
 
+      def update 
+        technique = find_technique 
+        technique && technique.user_id == session[:user_id]
+            technique.update(technique_params)
+            render json: technique, status: :ok
+        end
+
+        
+
 
     private
 

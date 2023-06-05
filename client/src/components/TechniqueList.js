@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import TechniqueCard from "./TechniqueCard";
 import { TechniqueContext } from "../context/technique";
 
-function TechniqueList({ addComment, selectedPosition }) {
+function TechniqueList({ addComment, selectedPosition, handleFavTechnique }) {
   const { allTechniques } = useContext(TechniqueContext);
 
   const filteredTechniques = selectedPosition
@@ -16,6 +16,7 @@ function TechniqueList({ addComment, selectedPosition }) {
       key={technique.id}
       technique={technique}
       addComment={addComment}
+      handleFavTechnique={handleFavTechnique}
     />
   ));
   if (techniqueArray.length === 0) {

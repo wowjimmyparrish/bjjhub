@@ -4,8 +4,14 @@ const UserTechniqueContext = createContext();
 
 function UserTechniqueProvider({ children }) {
   const [userTechniques, setUserTechniques] = useState([]);
+  const [favoriteTechniques, setFavoriteTechniques] = useState([]);
 
-  const value = { userTechniques, setUserTechniques };
+  const value = {
+    userTechniques,
+    setUserTechniques,
+    favoriteTechniques,
+    setFavoriteTechniques,
+  };
 
   return (
     <UserTechniqueContext.Provider value={value}>

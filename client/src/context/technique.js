@@ -5,7 +5,10 @@ const TechniqueContext = createContext();
 function TechniqueProvider({ children }) {
   const [allTechniques, setAllTechniques] = useState([]);
 
-  const value = { allTechniques, setAllTechniques };
+  const value = {
+    allTechniques,
+    setAllTechniques,
+  };
 
   return (
     <TechniqueContext.Provider value={value}>

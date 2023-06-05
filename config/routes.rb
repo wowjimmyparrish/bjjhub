@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :comments
 
-  resources :techniques, only: [:show, :index, :create, :destroy] do
+  resources :techniques do
     resources :comments, only: [:show, :index]
   end
 

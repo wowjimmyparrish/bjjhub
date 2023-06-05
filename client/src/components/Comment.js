@@ -3,7 +3,11 @@ import CommentCard from "./CommentCard";
 
 function Comment({ comments }) {
   const commentArray = comments.map((comment) => (
-    <CommentCard key={comment.id} comment={comment} />
+    <CommentCard
+      key={comment.id}
+      comment={comment.comment}
+      username={comment.user.username}
+    />
   ));
 
   return (

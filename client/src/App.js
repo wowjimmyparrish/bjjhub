@@ -10,11 +10,12 @@ import NavBar from "./components/NavBar";
 import MyTechniques from "./pages/MyTechniques";
 import MyComments from "./pages/MyComments";
 import CreateTechnique from "./pages/CreateTechnique";
+import MyFavorites from "./pages/MyFavorites";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { allTechniques, setAllTechniques } = useContext(TechniqueContext);
-  const { userTechniques, setUserTechniques } =
+  const { userTechniques, setUserTechniques, setFavoriteTechniques } =
     useContext(UserTechniqueContext);
   const { userComments, setUserComments } = useContext(UserCommentContext);
   const [selectedPosition, setSelectedPosition] = useState("");
@@ -24,6 +25,7 @@ function App() {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
+          console.log(user);
           setUser(user);
           setUserTechniques(user.created_techniques);
           setUserComments(user.comments);
@@ -41,6 +43,19 @@ function App() {
 
   function handleSearch(positionId) {
     setSelectedPosition(positionId);
+  }
+
+  function handleFavTechnique(updatedTechnique) {
+    const updatedTechniqueArray = allTechniques.map((technique) => {
+      if (technique.id === updatedTechnique.id) {
+        return updatedTechnique;
+      } else {
+        return technique;
+      }
+    });
+    setUserTechniques(updatedTechniqueArray);
+    setAllTechniques(updatedTechniqueArray);
+    setFavoriteTechniques(updatedTechniqueArray);
   }
 
   function addTechnique(newTechnique) {
@@ -62,6 +77,14 @@ function App() {
       (technique) => technique.id !== deletedTechnique.id
     );
     setUserTechniques(updatedUserTechniques);
+
+    setAllTechniques((prevTechniques) =>
+      prevTechniques.map((technique) =>
+        technique.id === deletedTechnique.id
+          ? { ...technique, is_favorite: false }
+          : technique
+      )
+    );
   }
 
   function addComment(newComment) {
@@ -132,7 +155,11 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Home addComment={addComment} selectedPosition={selectedPosition} />
+            <Home
+              addComment={addComment}
+              selectedPosition={selectedPosition}
+              handleFavTechnique={handleFavTechnique}
+            />
           </Route>
           <Route path="/uploadvideo">
             <CreateTechnique addTechnique={addTechnique} />
@@ -146,10 +173,13 @@ function App() {
               editComment={editComment}
             />
           </Route>
-          <Route path="/favorites"></Route>
+          <Route path="/favorites">
+            <MyFavorites handleFavTechnique={handleFavTechnique} />
+          </Route>
         </Switch>
       </main>
     </>
   );
 }
+
 export default App;
