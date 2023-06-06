@@ -10,12 +10,12 @@ import NavBar from "./components/NavBar";
 import MyTechniques from "./pages/MyTechniques";
 import MyComments from "./pages/MyComments";
 import CreateTechnique from "./pages/CreateTechnique";
-import MyFavorites from "./pages/MyFavorites";
+import TrainingResources from "./pages/TrainingResources";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
   const { allTechniques, setAllTechniques } = useContext(TechniqueContext);
-  const { userTechniques, setUserTechniques, setFavoriteTechniques } =
+  const { userTechniques, setUserTechniques } =
     useContext(UserTechniqueContext);
   const { userComments, setUserComments } = useContext(UserCommentContext);
   const [selectedPosition, setSelectedPosition] = useState("");
@@ -25,7 +25,6 @@ function App() {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          console.log(user);
           setUser(user);
           setUserTechniques(user.created_techniques);
           setUserComments(user.comments);
@@ -43,19 +42,6 @@ function App() {
 
   function handleSearch(positionId) {
     setSelectedPosition(positionId);
-  }
-
-  function handleFavTechnique(updatedTechnique) {
-    const updatedTechniqueArray = allTechniques.map((technique) => {
-      if (technique.id === updatedTechnique.id) {
-        return updatedTechnique;
-      } else {
-        return technique;
-      }
-    });
-    setUserTechniques(updatedTechniqueArray);
-    setAllTechniques(updatedTechniqueArray);
-    setFavoriteTechniques(updatedTechniqueArray);
   }
 
   function addTechnique(newTechnique) {
@@ -155,11 +141,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Home
-              addComment={addComment}
-              selectedPosition={selectedPosition}
-              handleFavTechnique={handleFavTechnique}
-            />
+            <Home addComment={addComment} selectedPosition={selectedPosition} />
           </Route>
           <Route path="/uploadvideo">
             <CreateTechnique addTechnique={addTechnique} />
@@ -173,8 +155,8 @@ function App() {
               editComment={editComment}
             />
           </Route>
-          <Route path="/favorites">
-            <MyFavorites handleFavTechnique={handleFavTechnique} />
+          <Route path="/trainingresources">
+            <TrainingResources />
           </Route>
         </Switch>
       </main>

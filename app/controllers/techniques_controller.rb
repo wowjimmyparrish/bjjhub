@@ -49,7 +49,7 @@ end
     private
 
     def technique_params
-        params.permit(:name, :video, :is_favorite, :position_id)
+        params.permit(:name, :video, :position_id)
     end
 
     def find_technique

@@ -3,7 +3,6 @@ class CreateTechniques < ActiveRecord::Migration[7.0]
     create_table :techniques do |t|
       t.string :name
       t.string :video
-      t.boolean :is_favorite
       t.integer :user_id
       t.integer :position_id
 

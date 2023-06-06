@@ -2,6 +2,11 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     rescue_from ActiveRecord::RecordNotFound, with: :userNotLoggedIn
 
+    def index 
+        users = User.all
+        render json: users,  status: :ok
+  end
+
     def create 
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -9,11 +14,16 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.find_by!(id: session[:user_id]) 
-                                        # Logged in users created_workouts and reviews with associated workout.  adapter: nil bypasses user serializer. 
+        if params[:id]
+            user = User.find(params[:id])
+        else 
+        user = User.find_by(id: session[:user_id]) 
+                                        # Logged in users created_techniques and comments with associated technique.  adapter: nil bypasses user serializer. 
+        end
                                         
         render json: user, include: [:created_techniques, :comments => {:include => :technique} ], adapter: nil
     end
+   
 
     private 
 
@@ -22,7 +32,7 @@ class UsersController < ApplicationController
     end
 
     def user_params 
-        params.permit(:username, :password, :password_confirmation)
+       params.permit(:username, :password, :password_confirmation, :rank, :age)
     end
 
       def render_unprocessable_entity_response(invalid)

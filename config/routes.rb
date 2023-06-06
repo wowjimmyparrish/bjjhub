@@ -8,11 +8,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :techniques, only: [:show, :index]
-  end
-
-  resources :users do
     resources :comments, only: [:show, :index]
   end
+
   resources :positions, only: [:index]
   
   

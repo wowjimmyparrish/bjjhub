@@ -7,6 +7,8 @@ function Comment({ comments }) {
       key={comment.id}
       comment={comment.comment}
       username={comment.user.username}
+      age={comment.user.age}
+      rank={comment.user.rank}
     />
   ));
 

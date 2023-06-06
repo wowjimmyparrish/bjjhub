@@ -32,8 +32,8 @@ function NavBar({ handleSearch }) {
         <NavLink className="p-4 fs-5" to="/mycomments">
           My Comments
         </NavLink>
-        <NavLink className="p-4 fs-5" to="/favorites">
-          Favorites
+        <NavLink className="p-4 fs-5" to="/trainingresources">
+          Training Resources
         </NavLink>
         <Search handleSearch={handleSearch} />
         <button className="btn btn-primary me-4" onClick={handleLogoutClick}>

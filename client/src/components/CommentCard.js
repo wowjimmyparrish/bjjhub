@@ -4,7 +4,7 @@ function CommentCard({ comment, username }) {
   return (
     <>
       <p>
-        {comment} -{username}
+        {comment} - {username}
       </p>
     </>
   );
