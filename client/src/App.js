@@ -25,6 +25,7 @@ function App() {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
+          console.log(user);
           setUser(user);
           setUserTechniques(user.created_techniques);
           setUserComments(user.comments);
