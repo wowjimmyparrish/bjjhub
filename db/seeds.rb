@@ -24,6 +24,19 @@ Technique.create!(name: "Armbar from guard", video: "https://youtu.be/pQ43Oy5k9y
 Technique.create!(name: "Cross choke from mount", video: "https://youtu.be/8wLWTw8G0c0", position_id: 4, user_id: 2)
 Technique.create!(name: "Rolling escape", video: "https://youtu.be/RRp5tficE00", position_id: 6, user_id: 2)
 Technique.create!(name: "5 ways out of back mount", video: "https://youtu.be/rHr_Xge5eIw", position_id: 5, user_id: 2)
+Technique.create!(name: "Side control sub", video: "https://youtu.be/p-6lmaseoGI", position_id: 2, user_id: 1)
+Technique.create!(name: "Knee On Belly position", video: "https://youtu.be/cOiwKYGDFMQ", position_id: 3, user_id: 1)
+Technique.create!(name: "Sub from guard", video: "https://youtu.be/pQ43Oy5k9yQ", position_id: 1, user_id: 1)
+Technique.create!(name: "Choke from mount", video: "https://youtu.be/8wLWTw8G0c0", position_id: 4, user_id: 2)
+Technique.create!(name: "Turtle escape", video: "https://youtu.be/RRp5tficE00", position_id: 6, user_id: 2)
+Technique.create!(name: "Back mount technique", video: "https://youtu.be/rHr_Xge5eIw", position_id: 5, user_id: 2)
+Technique.create!(name: "Side control technique", video: "https://youtu.be/p-6lmaseoGI", position_id: 2, user_id: 1)
+Technique.create!(name: "Knee On Belly", video: "https://youtu.be/cOiwKYGDFMQ", position_id: 3, user_id: 1)
+Technique.create!(name: "Guard techniques", video: "https://youtu.be/pQ43Oy5k9yQ", position_id: 1, user_id: 1)
+Technique.create!(name: "Mount", video: "https://youtu.be/8wLWTw8G0c0", position_id: 4, user_id: 2)
+Technique.create!(name: "Turtle defence", video: "https://youtu.be/RRp5tficE00", position_id: 6, user_id: 2)
+Technique.create!(name: "Back mount", video: "https://youtu.be/rHr_Xge5eIw", position_id: 5, user_id: 2)
+
 
 
 Comment.create!(comment: "Great video!", user_id: 1, technique_id: 1) 
