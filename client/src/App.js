@@ -19,13 +19,16 @@ function App() {
     useContext(UserTechniqueContext);
   const { userComments, setUserComments } = useContext(UserCommentContext);
   const [selectedPosition, setSelectedPosition] = useState("");
+  // page keeps track of the current page or offset for fetching teas
+  const [page, setPage] = useState(1);
+  // hasMore keeps track of whether there is more data available for infinite scroll
+  const [hasMore, setHasMore] = useState(true);
 
   // fetching user data
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          console.log(user);
           setUser(user);
           setUserTechniques(user.created_techniques);
           setUserComments(user.comments);
@@ -34,12 +37,24 @@ function App() {
     });
   }, [setUser, setUserTechniques, setUserComments]);
 
-  //fetching all techniques
+  // fetch techniques data
   useEffect(() => {
-    fetch("/techniques")
+    fetch("/techniques?page=1")
       .then((r) => r.json())
       .then((data) => setAllTechniques(data));
   }, [setAllTechniques]);
+
+  // fetches more techniques when user triggers the infinite scroll by reaching end of page. updates techniques state with newly fetched data, increments the page state for the next fetch, and sets hasMore to false if there are no more teas to fetch.
+  const fetchMoreTechniques = async () => {
+    const response = await fetch(`/techniques?page=${page + 1}`);
+    const data = await response.json();
+    if (data.length > 0) {
+      setAllTechniques((prevTechniques) => [...prevTechniques, ...data]);
+      setPage((prevPage) => prevPage + 1);
+    } else {
+      setHasMore(false); // No more data available
+    }
+  };
 
   function handleSearch(positionId) {
     setSelectedPosition(positionId);
@@ -142,7 +157,12 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Home addComment={addComment} selectedPosition={selectedPosition} />
+            <Home
+              addComment={addComment}
+              selectedPosition={selectedPosition}
+              hasMore={hasMore}
+              fetchMoreTechniques={fetchMoreTechniques}
+            />
           </Route>
           <Route path="/uploadvideo">
             <CreateTechnique addTechnique={addTechnique} />

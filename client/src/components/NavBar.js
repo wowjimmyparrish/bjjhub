@@ -15,10 +15,8 @@ function NavBar({ handleSearch }) {
   }
   return (
     <div className="nav justify-content-end">
-      <h2 className="fs-4 position-absolute top-0 start-0 mt-2 ms-2">
-        Welcome, {user.username}!
-      </h2>
-      <h3>BJJhub</h3>
+      <h2 className="fs-4 position-absolute top-0 start-0 mt-2 ms-2">BJJhub</h2>
+      <h4>Welcome, {user.username}!</h4>
       <div className="navbar">
         <NavLink className="p-4 fs-5" to="/">
           Home{" "}

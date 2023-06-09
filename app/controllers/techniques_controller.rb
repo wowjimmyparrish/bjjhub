@@ -3,10 +3,13 @@ class TechniquesController < ApplicationController
     before_action :authorize
     skip_before_action :authorize, only: [:index, :show]
 
-    def index 
-        techniques = Technique.all
-        render json: techniques, include: [:user, :comments], status: :ok
-  end
+  def index
+    page = params[:page].to_i.positive? ? params[:page].to_i : 1
+    per_page = 3
+
+    techniques = Technique.order('lower(name)').offset((page - 1) * per_page).limit(per_page)
+    render json: techniques, include: [:user, :comments], status: :ok
+end
 
   def show 
     technique = find_technique

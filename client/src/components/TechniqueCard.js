@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
+
 function TechniqueCard({ technique, addComment }) {
   const [videoError, setVideoError] = useState(false);
 
