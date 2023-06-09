@@ -1,8 +1,8 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../context/user";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
+
 function NavBar({ handleSearch }) {
   const { user, setUser } = useContext(UserContext);
 
@@ -13,41 +13,81 @@ function NavBar({ handleSearch }) {
       }
     });
   }
+
   return (
-    <div className="nav justify-content-end shadow p-3 mb-5 bg-body-tertiary rounded ">
-      <div>
-        <h1 className="fs-4 position-absolute top-0 start-0 m-1 p-1">BJJhub</h1>
-      </div>
-      <div>
-        <h4 className="position-absolute top-0 end-0  m-1 p-1 me-4">
-          Welcome, {user.username}!
-        </h4>
-      </div>
-      <div className="navbar">
-        <NavLink className="p-4 fs-5" to="/">
-          Home{" "}
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand" to="/">
+          BJJhub
         </NavLink>
-        <NavLink className="p-4 fs-5" to="/uploadvideo">
-          Upload Video{" "}
-        </NavLink>
-        <NavLink className="p-4 fs-5" to="/myvideos">
-          My Videos
-        </NavLink>
-        <NavLink className="p-4 fs-5" to="/mycomments">
-          My Comments
-        </NavLink>
-        <NavLink className="p-4 fs-5" to="/trainingresources">
-          Training Resources
-        </NavLink>
-        <Search handleSearch={handleSearch} />
+        <h4 className="text-end m-1 p-1 me-4">Welcome, {user.username}!</h4>
         <button
-          className="btn btn-primary me-4  m-2"
-          onClick={handleLogoutClick}
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          Logout
+          <span className="navbar-toggler-icon"></span>
         </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                exact
+                to="/"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/uploadvideo"
+              >
+                Upload Video
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/myvideos"
+              >
+                My Videos
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/mycomments"
+              >
+                My Comments
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/trainingresources"
+              >
+                Training Resources
+              </NavLink>
+            </li>
+          </ul>
+          <Search handleSearch={handleSearch} />
+          <button className="btn btn-primary ms-2" onClick={handleLogoutClick}>
+            Logout
+          </button>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

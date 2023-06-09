@@ -19,6 +19,7 @@ function CreateTechnique({ addTechnique }) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
+
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/techniques", requestOptions).then((r) => {
@@ -33,31 +34,33 @@ function CreateTechnique({ addTechnique }) {
   return (
     <div>
       <h1 className="text-center">Post Technique</h1>
-      <hr></hr>
+      <hr />
       <p className="text-center">Please submit information below</p>
       <form className="d-flex align-items-center justify-content-center flex-column">
-        <input
-          className="my-2"
-          style={{ width: "50%" }}
-          type="text"
-          placeholder="Name"
-          value={data.name}
-          required
-          onChange={(e) => setData({ ...data, name: e.target.value })}
-        ></input>
-        <input
-          className="my-2"
-          style={{ width: "50%" }}
-          type="text"
-          placeholder="Video"
-          value={data.video}
-          required
-          onChange={(e) => setData({ ...data, video: e.target.value })}
-        ></input>
-        <label>
-          {" "}
-          Select position{" "}
+        <div className="mb-3">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Name"
+            value={data.name}
+            required
+            onChange={(e) => setData({ ...data, name: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Video"
+            value={data.video}
+            required
+            onChange={(e) => setData({ ...data, video: e.target.value })}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Select position</label>
           <select
+            className="form-select"
             name="position"
             value={data.position_id}
             onChange={(e) => setData({ ...data, position_id: e.target.value })}
@@ -69,9 +72,7 @@ function CreateTechnique({ addTechnique }) {
             <option value="5">Rear Mount</option>
             <option value="6">Turtle</option>
           </select>
-          <br></br>
-        </label>
-        <br></br>
+        </div>
         <button
           onClick={handleSubmit}
           type="submit"

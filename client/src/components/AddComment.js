@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../context/user";
 
 function AddComment({ addComment, technique }) {
@@ -36,19 +36,20 @@ function AddComment({ addComment, technique }) {
             technique_id: technique.id,
             user_id: user.id,
           });
-          //this clears the input after errors
         });
       }
     });
   }
+
   return (
     <div>
       <form className="comment-form">
         <input
-          className="input"
+          className="form-control mb-2"
           type="text"
           placeholder="Comment"
           value={data.comment}
+          style={{ width: "641px" }}
           onChange={(e) =>
             setData({
               comment: e.target.value,
@@ -56,9 +57,9 @@ function AddComment({ addComment, technique }) {
               user_id: user.id,
             })
           }
-        ></input>
+        />
         <button
-          className="btn btn-primary m-2"
+          className="btn btn-primary me-2"
           type="submit"
           disabled={!data.comment}
           onClick={handleSubmit}
@@ -66,7 +67,7 @@ function AddComment({ addComment, technique }) {
           Submit
         </button>
         {errors.map((error) => (
-          <p key={error} style={{ color: "red" }}>
+          <p key={error} className="text-danger">
             {error}
           </p>
         ))}

@@ -24,8 +24,8 @@ function UserTechniqueCard({ name, userVideo, deleteTechnique, technique }) {
   }
 
   return (
-    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded">
-      <div>
+    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded d-flex justify-content-center align-items-center">
+      <div className="text-center">
         <h3>{name}</h3>
         {videoError ? (
           <p>Video failed to load or display.</p>
