@@ -3,9 +3,11 @@ import React from "react";
 function CommentCard({ comment, username }) {
   return (
     <>
-      <p>
-        {comment} - {username}
-      </p>
+      <span>
+        <ul>
+          {comment} - {username}
+        </ul>
+      </span>
     </>
   );
 }

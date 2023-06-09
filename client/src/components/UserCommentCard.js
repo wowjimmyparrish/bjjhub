@@ -51,7 +51,7 @@ function UserCommentCard({ deleteComment, editComment, comment, technique }) {
   }
 
   return (
-    <div className="card p-4 m-4">
+    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded">
       <h3>Technique:</h3>
       <p>{technique}</p>
       <h3>Comment:</h3>

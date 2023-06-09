@@ -24,16 +24,22 @@ function UserTechniqueCard({ name, userVideo, deleteTechnique, technique }) {
   }
 
   return (
-    <div className="card p-4 m-4">
-      <h3>{name}</h3>
-      {videoError ? (
-        <p>Video failed to load or display.</p>
-      ) : (
-        <ReactPlayer url={userVideo} onError={handleVideoError}></ReactPlayer>
-      )}
-      <button className="btn btn-danger" onClick={handleDelete} type="submit">
-        Delete
-      </button>
+    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div>
+        <h3>{name}</h3>
+        {videoError ? (
+          <p>Video failed to load or display.</p>
+        ) : (
+          <ReactPlayer url={userVideo} onError={handleVideoError}></ReactPlayer>
+        )}
+        <button
+          className="btn btn-danger m-2"
+          onClick={handleDelete}
+          type="submit"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

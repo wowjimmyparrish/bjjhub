@@ -14,9 +14,15 @@ function NavBar({ handleSearch }) {
     });
   }
   return (
-    <div className="nav justify-content-end">
-      <h2 className="fs-4 position-absolute top-0 start-0 mt-2 ms-2">BJJhub</h2>
-      <h4>Welcome, {user.username}!</h4>
+    <div className="nav justify-content-end shadow p-3 mb-5 bg-body-tertiary rounded ">
+      <div>
+        <h1 className="fs-4 position-absolute top-0 start-0 m-1 p-1">BJJhub</h1>
+      </div>
+      <div>
+        <h4 className="position-absolute top-0 end-0  m-1 p-1 me-4">
+          Welcome, {user.username}!
+        </h4>
+      </div>
       <div className="navbar">
         <NavLink className="p-4 fs-5" to="/">
           Home{" "}
@@ -34,7 +40,10 @@ function NavBar({ handleSearch }) {
           Training Resources
         </NavLink>
         <Search handleSearch={handleSearch} />
-        <button className="btn btn-primary me-4" onClick={handleLogoutClick}>
+        <button
+          className="btn btn-primary me-4  m-2"
+          onClick={handleLogoutClick}
+        >
           Logout
         </button>
       </div>

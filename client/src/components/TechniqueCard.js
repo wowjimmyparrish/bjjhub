@@ -11,7 +11,7 @@ function TechniqueCard({ technique, addComment }) {
   };
 
   return (
-    <div className="card p-4 m-4">
+    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded">
       <h3>{technique.name}</h3>
       {videoError ? (
         <p>Video failed to load or display.</p>
@@ -21,9 +21,12 @@ function TechniqueCard({ technique, addComment }) {
           url={technique.video}
         ></ReactPlayer>
       )}
-
-      <Comment comments={technique.comments} />
-      <AddComment addComment={addComment} technique={technique} />
+      <div className="position-absolute top-0 start-50">
+        <Comment comments={technique.comments} />
+      </div>
+      <div>
+        <AddComment addComment={addComment} technique={technique} />
+      </div>
     </div>
   );
 }
