@@ -1,5 +1,3 @@
-# README
-
 # BJJHub
 
 BJJHub is a full stack application that allows logged-in users to view, search, comment, and post technique videos. This repository contains the code for the BJJHub application.
