@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 function NavBar({ handleSearch }) {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -20,71 +20,76 @@ function NavBar({ handleSearch }) {
         <NavLink className="navbar-brand" to="/">
           BJJhub
         </NavLink>
-        <h4 className="text-end m-1 p-1 me-4">Welcome, {user.username}!</h4>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                exact
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/uploadvideo"
-              >
-                Upload Video
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/myvideos"
-              >
-                My Videos
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/mycomments"
-              >
-                My Comments
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/trainingresources"
-              >
-                Training Resources
-              </NavLink>
-            </li>
-          </ul>
-          <Search handleSearch={handleSearch} />
-          <button className="btn btn-primary ms-2" onClick={handleLogoutClick}>
-            Logout
+
+        <div class="d-flex justify-content-end">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
           </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  exact
+                  to="/"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/uploadvideo"
+                >
+                  Upload Video
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/myvideos"
+                >
+                  My Videos
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/mycomments"
+                >
+                  My Comments
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/trainingresources"
+                >
+                  Training Resources
+                </NavLink>
+              </li>
+            </ul>
+            <Search handleSearch={handleSearch} />
+            <button
+              className="btn btn-primary ms-2"
+              onClick={handleLogoutClick}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </nav>
