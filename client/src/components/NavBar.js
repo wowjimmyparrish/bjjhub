@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context/user";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 function NavBar({ handleSearch }) {
   const { setUser } = useContext(UserContext);
+  const [collapsed, setCollapsed] = useState(true);
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -14,82 +15,86 @@ function NavBar({ handleSearch }) {
     });
   }
 
+  const toggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-body-tertiary rounded">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
-          BJJhub
+    <nav className="navbar navbar-expand-sm navbar-light bg-light shadow p-3 mb-5 bg-body-tertiary rounded   ">
+      <div className="container-fluid ">
+        <NavLink className="navbar-brand fs-3" to="/">
+          BJJHub
         </NavLink>
 
-        <div class="d-flex justify-content-end">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded={!collapsed ? true : false}
+          aria-label="Toggle navigation"
+          onClick={toggleCollapse}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          className={`collapse navbar-collapse ${collapsed ? "" : "show"}`}
+          id="navbarNav"
+        >
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                exact
+                to="/"
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/uploadvideo"
+              >
+                Upload Video
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/myvideos"
+              >
+                My Videos
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/mycomments"
+              >
+                My Comments
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/trainingresources"
+              >
+                Training Resources
+              </NavLink>
+            </li>
+          </ul>
+          <Search handleSearch={handleSearch} />
+          <button className="btn btn-dark ms-2" onClick={handleLogoutClick}>
+            Logout
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  exact
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/uploadvideo"
-                >
-                  Upload Video
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/myvideos"
-                >
-                  My Videos
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/mycomments"
-                >
-                  My Comments
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  activeClassName="active"
-                  to="/trainingresources"
-                >
-                  Training Resources
-                </NavLink>
-              </li>
-            </ul>
-            <Search handleSearch={handleSearch} />
-            <button
-              className="btn btn-primary ms-2"
-              onClick={handleLogoutClick}
-            >
-              Logout
-            </button>
-          </div>
         </div>
       </div>
     </nav>

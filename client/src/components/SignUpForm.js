@@ -31,7 +31,7 @@ function SignUpForm() {
 
   return (
     <form
-      className="d-flex justify-content-center align-items-center flex-column m-2"
+      className="d-flex justify-content-center align-items-center flex-column m-2 text-white"
       onSubmit={handleSubmit}
     >
       <h5 htmlFor="username">Username: </h5>
@@ -58,7 +58,7 @@ function SignUpForm() {
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
       />
-      <button className="btn btn-primary m-2" type="submit">
+      <button className="btn btn-danger m-2" type="submit">
         Submit
       </button>
       {errors.length > 0 && (

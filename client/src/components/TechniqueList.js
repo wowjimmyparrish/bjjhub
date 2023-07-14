@@ -34,7 +34,7 @@ function TechniqueList({
   } else
     return (
       <div id="technique-list">
-        <h1 className="text-center">Video List</h1>
+        <h1 className="text-center">Technique List</h1>
         <InfiniteScroll
           dataLength={allTechniques.length || 0} // Length of the data array. if falsy (0, null, or undefined), OR operator evaluates to 0, ensuring a valid value
           next={fetchMoreTechniques} // This prop specifies the function that should be called when the user reaches the end of the scrollable content.

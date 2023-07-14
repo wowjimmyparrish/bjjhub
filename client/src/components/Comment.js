@@ -11,14 +11,12 @@ function Comment({ comments }) {
   ));
 
   return (
-    <div
-      id="comment-list"
-      className="mt-4 container"
-      style={{ maxWidth: "600px" }}
-    >
-      <h5>Comments:</h5>
-      <div className="card overflow-auto" style={{ maxHeight: "400px" }}>
-        <ul className="list-group list-group-flush">{commentArray}</ul>
+    <div id="comment-list" className="mt-4" style={{ maxWidth: "600px" }}>
+      <div
+        className=" overflow-auto"
+        style={{ maxHeight: "350px", maxWidth: "500px" }}
+      >
+        <ul>{commentArray}</ul>
       </div>
     </div>
   );

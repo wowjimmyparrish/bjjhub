@@ -11,21 +11,25 @@ function TechniqueCard({ technique, addComment }) {
   };
 
   return (
-    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded">
-      <h3>{technique.name}</h3>
-      {videoError ? (
-        <p>Video failed to load or display.</p>
-      ) : (
-        <ReactPlayer
-          onError={handleVideoError}
-          url={technique.video}
-        ></ReactPlayer>
-      )}
-      <div className="position-absolute top-0 start-50">
-        <Comment comments={technique.comments} />
-      </div>
+    <div className="card p-4 m-4 shadow p-3 mb-5 bg-body-tertiary rounded d-flex justify-content-between flex-row align-items-start  ">
       <div>
-        <AddComment addComment={addComment} technique={technique} />
+        <h3>{technique.name}</h3>
+        {videoError ? (
+          <p>Video failed to load or display.</p>
+        ) : (
+          <ReactPlayer
+            onError={handleVideoError}
+            url={technique.video}
+          ></ReactPlayer>
+        )}
+        <div className="mt-2">
+          <AddComment addComment={addComment} technique={technique} />
+        </div>
+      </div>
+
+      <div className="me-auto p-2 bd-highlight">
+        <h5>Comments:</h5>
+        <Comment comments={technique.comments} />
       </div>
     </div>
   );

@@ -76,7 +76,7 @@ function UserCommentCard({ deleteComment, editComment, comment, technique }) {
         )}
         <div>
           <button
-            className="btn btn-primary m-2"
+            className="btn btn-dark m-2"
             type="submit"
             onClick={edit ? handleEditClick : handleSaveClick}
           >

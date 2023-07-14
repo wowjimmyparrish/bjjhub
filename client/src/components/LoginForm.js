@@ -37,7 +37,7 @@ function LoginForm() {
   }
   return (
     <form
-      className="d-flex justify-content-center flex-column align-items-center"
+      className="d-flex justify-content-center flex-column  align-items-center text-white pt-5"
       onSubmit={handleSubmit}
     >
       <h5>Username</h5>
@@ -59,7 +59,7 @@ function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="btn btn-primary m-2" type="submit">
+      <button className="btn btn-danger m-2" type="submit">
         Login
       </button>
       <p style={{ color: "red" }}>{errors}</p>

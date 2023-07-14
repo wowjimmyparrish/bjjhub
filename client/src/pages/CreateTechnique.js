@@ -73,11 +73,7 @@ function CreateTechnique({ addTechnique }) {
             <option value="6">Turtle</option>
           </select>
         </div>
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className="btn btn-primary"
-        >
+        <button onClick={handleSubmit} type="submit" className="btn btn-dark">
           Submit Now
         </button>
         {errors.length > 0 && (

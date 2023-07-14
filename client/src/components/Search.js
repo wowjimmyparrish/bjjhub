@@ -11,7 +11,7 @@ function Search({ handleSearch }) {
   };
 
   return (
-    <label>
+    <label className="ms-auto p-2 bd-highlight">
       Search By Position{" "}
       <select name="position" onChange={handleChange}>
         <option value="">All</option>
